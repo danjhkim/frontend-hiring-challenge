@@ -1,0 +1,44 @@
+.Inbox {
+	position: relative;
+}
+
+.innerInbox {
+	width: 90%;
+	margin: 0 auto;
+	cursor: pointer;
+}
+
+.archiveAll {
+	margin: 0 auto;
+	background-color: transparent;
+	width: 100%;
+	border-radius: 0 0 7px 7px;
+	padding: 0.8em;
+	box-sizing: border-box;
+	border: var(--border);
+	border-top: none;
+	font-weight: 800;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	z-index: -1;
+}
+
+.boxBox {
+	display: flex;
+	align-items: center;
+}
+
+.box {
+	margin-right: 1em;
+}
+
+.innerInbox:active .textBox {
+	color: #808080;
+}
+
+.checkmark {
+	width: 15px;
+	height: 15px;
+}

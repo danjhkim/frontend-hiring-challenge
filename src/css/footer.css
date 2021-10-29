@@ -1,93 +1,93 @@
 .footerback {
-	width: 100%;
-	height: 45px;
-	background-color: white;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	padding: 0.1em 0;
-	position: relative;
-	border-top: var(--border);
+  width: 100%;
+  height: 45px;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.1em 0;
+  position: relative;
+  border-top: var(--border);
 }
 
 .outerNavCircle {
-	width: 70px;
-	height: 70px;
-	border: var(--border);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-radius: 50%;
-	position: absolute;
-	bottom: 8px;
-	left: calc(50% - 35px);
-	background-color: white;
-	cursor: pointer;
+  width: 70px;
+  height: 70px;
+  border: var(--border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 8px;
+  left: calc(50% - 35px);
+  background-color: white;
+  cursor: pointer;
 }
 
 .circleNav {
-	width: 60px;
-	height: 60px;
-	border-radius: 50%;
-	background-color: rgb(11, 182, 11);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	transition-duration: 0.2s;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #0bb60b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-duration: 0.2s;
 }
 
 .circleNav:active {
-	background-color: rgb(26, 26, 26);
+  background-color: #1a1a1a;
 }
 
 .circleNav:active .dotFill {
-	stroke: black;
+  stroke: black;
 }
 
 .filler {
-	width: 72px;
+  width: 72px;
 }
 
 .innerCircle {
-	width: 10px;
-	height: 10px;
-	background-color: green;
-	border-radius: 50%;
-	align-self: center;
-	transition-duration: 0.3s;
+  width: 10px;
+  height: 10px;
+  background-color: green;
+  border-radius: 50%;
+  align-self: center;
+  transition-duration: 0.3s;
 }
 
 .onlineDot {
-	display: flex;
-	justify-content: center;
-	width: 20px;
-	height: 20px;
-	border-radius: 50%;
-	border: 1px solid rgb(240, 240, 240);
-	cursor: pointer;
+  display: flex;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #f0f0f0;
+  cursor: pointer;
 }
 
 .red {
-	background-color: red;
+  background-color: red;
 }
 
 .green {
-	background-color: green;
+  background-color: green;
 }
 
 .button {
-	cursor: pointer;
-	border-bottom: 3px solid transparent;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	transition-duration: 0.3s;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition-duration: 0.3s;
 }
 
 .button:hover {
-	border-bottom: 3px solid rgb(18, 173, 18);
+  border-bottom: 3px solid #12ad12;
 }
 
 .tooltip {
-	position: relative;
+  position: relative;
 }

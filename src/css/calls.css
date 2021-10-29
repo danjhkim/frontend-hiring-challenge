@@ -1,10 +1,11 @@
 .callsMain {
-	display: flex;
-	flex-flow: column;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
 }
+
 .callsTitle {
-	margin: 1em 0em;
-	font-weight: 600;
+  margin: 1em 0em;
+  font-weight: 600;
 }

@@ -9,7 +9,8 @@
   "private": false,
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "sass" : "sass src/sass:src/css --watch --no-source-map"
   },
   "dependencies": {
     "axios": "^0.24.0",
@@ -34,6 +35,7 @@
     "file-loader": "^6.2.0",
     "html-loader": "3.0.*",
     "html-webpack-plugin": "5.5.*",
+    "sass": "^1.43.4",
     "style-loader": "3.3.*",
     "webpack": "5.60.*",
     "webpack-cli": "4.9.*",

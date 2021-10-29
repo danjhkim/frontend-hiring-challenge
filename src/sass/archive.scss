@@ -1,0 +1,92 @@
+//variables
+$border1: 1px solid rgb(202, 202, 202);
+$borderRadius: 6px;
+
+@mixin borderFunc($var1, $var2) {
+	border: $var1;
+	border-radius: $var2;
+}
+
+.archiveMain {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	padding: 0.5em 0em;
+	box-sizing: border-box;
+}
+
+.archiveTitle {
+	margin: 1em 0em;
+	font-weight: 600;
+	font-size: 15px;
+}
+
+.options {
+	width: 50px;
+	@include borderFunc($border1, $borderRadius);
+	border: var(--border);
+	border-radius: var(--borderRadius);
+	padding: 0.5em 0em;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	cursor: pointer;
+	text-decoration: none;
+	color: inherit;
+	background-color: var(--backgroundWhite);
+	text-align: center;
+	transition-duration: 0.5s;
+}
+
+.clearbutton {
+	width: 20px;
+	height: 20px;
+}
+
+.clear {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+}
+
+.clear span {
+	margin-top: 0.5em;
+	font-size: 10px;
+}
+
+.options:active {
+	box-shadow: var(--boxShadow1);
+}
+
+.options:hover {
+	background-color: rgb(231, 231, 231);
+}
+
+.textBoxModal {
+	width: 100%;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 12px;
+	color: #333333;
+}
+
+.mess {
+	text-align: center;
+}
+
+.mess2 {
+	margin-top: 1em;
+	text-align: center;
+}
+
+.titleArchiveHeader {
+	width: 300px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
