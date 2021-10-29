@@ -10,12 +10,11 @@
 .archiveTitle {
 	margin: 1em 0em;
 	font-weight: 600;
-	font-size: 13px;
+	font-size: 15px;
 }
 
 .options {
-	margin-top: 2em;
-	width: 60px;
+	width: 50px;
 	border: var(--border);
 	border-radius: var(--borderRadius);
 	padding: 0.5em 0em;
@@ -43,7 +42,7 @@
 
 .clear span {
 	margin-top: 0.5em;
-	font-size: 9px;
+	font-size: 10px;
 }
 
 .options:active {
@@ -60,6 +59,8 @@
 	flex-flow: column;
 	justify-content: center;
 	align-items: center;
+	font-size: 12px;
+	color: #333333;
 }
 
 .mess {
@@ -69,4 +70,11 @@
 .mess2 {
 	margin-top: 1em;
 	text-align: center;
+}
+
+.titleArchiveHeader {
+	width: 300px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }

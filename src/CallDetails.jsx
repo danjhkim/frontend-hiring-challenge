@@ -18,7 +18,6 @@ import Archive from './icons/archive.svg';
 import Del from './icons/del.svg';
 
 const CallDetails = ({ history }) => {
-	const checkRef2 = useRef();
 	const callcontext = useContext(CallContext);
 	const { id } = useParams();
 	const [details, setDetails] = useState();
@@ -34,6 +33,7 @@ const CallDetails = ({ history }) => {
 
 	const archiveCall = () => {
 		postArchived(id).then(() => {
+			callcontext.setCallList(null);
 			history.push('/archived');
 		});
 	};

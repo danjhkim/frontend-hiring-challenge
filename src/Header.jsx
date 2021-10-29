@@ -10,14 +10,14 @@ import Dots from './icons/dots.svg';
 
 const customStyles = {
 	content: {
-		top: '20%',
+		top: '25%',
 		left: '50%',
 		right: 'auto',
 		bottom: 'auto',
 		marginRight: '-50%',
 		transform: 'translate(-50%, -50%)',
 		border: '1px solid rgb(202, 202, 202)',
-		width: '20%',
+		width: '12%',
 		borderRadius: '7px',
 		background: 'rgb(245, 245, 245)',
 	},
@@ -153,7 +153,7 @@ const Header = () => {
 						isOpen={modalIsOpen}
 						onRequestClose={closeModal}
 						style={customStyles}
-						contentLabel='Example Modal'>
+						contentLabel='Modal top nav'>
 						<h2 className='test'>Settings</h2>
 						<form>
 							<Link
@@ -162,9 +162,6 @@ const Header = () => {
 								onClick={archiveCLoser}>
 								Archived Calls
 							</Link>
-							<button disabled>add later</button>
-							<button disabled>add later</button>
-							<button disabled>add later</button>
 						</form>
 					</Modal>
 				</div>

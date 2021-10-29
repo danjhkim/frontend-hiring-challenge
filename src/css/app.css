@@ -19,8 +19,8 @@
 }
 
 #app .container {
-	width: 376px;
-	height: 666px;
+	width: 450px;
+	height: 799px;
 	z-index: 100;
 
 	background: var(--backgroundWhite);

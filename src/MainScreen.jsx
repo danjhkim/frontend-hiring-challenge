@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
+import { withRouter } from 'react-router-dom';
 import { gsap } from 'gsap';
 import lottie from 'lottie-web';
 import { CallContext } from './contexts/CallContext';
@@ -10,11 +11,9 @@ import './css/mainscreen.css';
 import Box from './icons/box.svg';
 import tick from './icons/tick.json';
 
-const MainScreen = () => {
+const MainScreen = ({ history }) => {
 	const callcontext = useContext(CallContext);
 	const checkRef = useRef();
-	const arhiveRef = useRef();
-	const innerRef = useRef();
 	const [checkanim, setCheckAnim] = useState();
 
 	useEffect(() => {
@@ -28,23 +27,20 @@ const MainScreen = () => {
 				preserveAspectRatio: 'none',
 			},
 		});
-
 		setCheckAnim(checked);
 	}, []);
 
 	const animateBox = () => {
 		if (callcontext.list) {
-			callcontext.list.map((item, index) => {
-				postArchived(item.id).then(() => {
-					checkanim.playSegments([0, 88], true);
-				});
-			});
-		} else {
-			getCalls().then(res => {
-				res.map(item => {
-					postArchived(item.id).then(() => {
+			let last = callcontext.list.at(-1);
+			callcontext.list.map(item => {
+				postArchived(item.id).then(res => {
+					if (item === last) {
+						console.log('success!');
 						checkanim.playSegments([0, 88], true);
-					});
+						callcontext.setCallList(null);
+						history.push('/archived');
+					}
 				});
 			});
 		}
@@ -58,28 +54,28 @@ const MainScreen = () => {
 		tl.play();
 	};
 
-	const ScreenSwitcher = () => {
+	useEffect(() => {
 		if (callcontext.menu === 1) {
-			gsap.to(arhiveRef.current, {
+			gsap.to('.archiveAll', {
 				yPercent: 0,
 			});
-			gsap.to(innerRef.current, {
+			gsap.to('.innerInbox', {
 				display: 'block',
 			});
 		} else {
-			gsap.to(arhiveRef.current, {
+			gsap.to('.archiveAll', {
 				yPercent: -100,
 			});
-			gsap.to(innerRef.current, {
+			gsap.to('.innerInbox', {
 				display: 'none',
 			});
 		}
-	};
+	}, [callcontext.menu]);
 
 	return (
 		<div className='Inbox'>
-			<div className='innerInbox' onClick={animateBox} ref={innerRef}>
-				<div className='archiveAll' ref={arhiveRef}>
+			<div className='innerInbox' onClick={animateBox}>
+				<div className='archiveAll'>
 					<div className='boxBox'>
 						<Box className='box' />
 						<span className='textBox'>Archive all calls</span>
@@ -87,9 +83,8 @@ const MainScreen = () => {
 					<div className='checkmark' ref={checkRef}></div>
 				</div>
 			</div>
-			{ScreenSwitcher()}
 		</div>
 	);
 };
 
-export default MainScreen;
+export default withRouter(MainScreen);

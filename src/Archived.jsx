@@ -12,16 +12,17 @@ import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import Incoming from './icons/incoming.svg';
 import Outgoing from './icons/outgoing.svg';
 import Clear from './icons/clear.svg';
+import Saved from './icons/saved.svg';
 
 const customStyles = {
 	content: {
-		top: '20%',
+		top: '25%',
 		left: '50%',
 		right: 'auto',
 		bottom: 'auto',
 		transform: 'translate(-50%, -50%)',
 		border: '1px solid rgb(202, 202, 202)',
-		width: '20%',
+		width: '12%',
 		borderRadius: '7px',
 		background: 'rgb(245, 245, 245)',
 	},
@@ -56,7 +57,7 @@ const Archived = ({ history }) => {
 			openModal();
 			setTimeout(() => {
 				closeModal();
-			}, 500);
+			}, 1000);
 		});
 	};
 
@@ -85,14 +86,16 @@ const Archived = ({ history }) => {
 						<h3 className='mess2'>Redirecting...</h3>
 					</div>
 				</Modal>
-				<div className='archiveTitle'>Archived Calls</div>
-				{!delay ? loadSaveArchived() : null}
-				<div className='options' onClick={clearAll}>
-					<div className='clear'>
-						<Clear className='clearbutton' />
-						<span>Clear all</span>
+				<div className='titleArchiveHeader'>
+					<div className='archiveTitle'>Archived Calls</div>
+					<div className='options' onClick={clearAll}>
+						<div className='clear'>
+							<Clear className='clearbutton' />
+							<span>Clear all</span>
+						</div>
 					</div>
 				</div>
+				{!delay ? loadSaveArchived() : null}
 			</div>
 		);
 	};
@@ -137,7 +140,14 @@ const Archived = ({ history }) => {
 										</div>
 									</div>
 								</div>
+
 								<div className='time'>
+									{item.is_archived ? (
+										<div className='saved'>
+											<Saved className='savedBox' />
+											<span>archived</span>
+										</div>
+									) : null}
 									{hours + ':' + minutes}
 								</div>
 							</Link>
