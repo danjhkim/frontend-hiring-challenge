@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext, useRef } from 'react';
 import { withRouter, useParams } from 'react-router-dom';
-import Loader from 'react-loader-spinner';
+import LoaderComp from './LoaderComp.jsx';
 
 import { getDetails } from './apis/calls';
 import { postArchived } from './apis/calls';
@@ -10,7 +10,6 @@ import { CallContext } from './contexts/CallContext';
 
 import './css/inbox.css';
 import './css/details.css';
-import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 import Incoming from './icons/incoming.svg';
 import Outgoing from './icons/outgoing.svg';
@@ -105,12 +104,7 @@ const CallDetails = ({ history }) => {
 		} else {
 			return (
 				<div className='centerLoad'>
-					<Loader
-						type='TailSpin'
-						color='#2c2c2c'
-						height={70}
-						width={70}
-					/>
+					<LoaderComp />
 				</div>
 			);
 		}

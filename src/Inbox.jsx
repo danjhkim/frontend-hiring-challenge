@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Loader from 'react-loader-spinner';
+import LoaderComp from './LoaderComp.jsx';
+
 import { CallContext } from './contexts/CallContext';
 
 import { getCalls } from './apis/calls';
 
 import './css/inbox.css';
-import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import Incoming from './icons/incoming.svg';
 import Outgoing from './icons/outgoing.svg';
 import Saved from './icons/saved.svg';
@@ -137,12 +137,7 @@ const Inbox = ({ activeCalls }) => {
 		} else {
 			return (
 				<div className='centerLoad'>
-					<Loader
-						type='TailSpin'
-						color='#2c2c2c'
-						height={70}
-						width={70}
-					/>
+					<LoaderComp />
 				</div>
 			);
 		}
