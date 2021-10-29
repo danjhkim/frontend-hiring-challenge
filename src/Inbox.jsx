@@ -25,56 +25,110 @@ const Inbox = ({ activeCalls }) => {
 	const loadList = () => {
 		if (callcontext.list) {
 			const callList = callcontext.list.map((item, index) => {
-				if (!item.is_archived) {
-					let date = new Date(item.created_at);
-					const [month, day, year, hours, minutes] = [
-						date.toLocaleString('default', { month: 'long' }),
-						date.getDate(),
-						date.getFullYear(),
-						date.getHours(),
-						date.getMinutes(),
-					];
-					return (
-						<div className='mainList' key={item.id}>
-							<div className='date'>
-								<hr className='dotted' />
-								{`${month}, ${day} ${year}`}
-								<hr className='dotted' />
-							</div>
-							<Link
-								to={`/calls/${item.id}`}
-								className='callBox'
-								onClick={() => callcontext.changeMenu(2)}>
-								<div className='leftSide'>
-									{item.direction === 'outbound' ? (
-										<Outgoing className='phone' />
-									) : (
-										<Incoming className='phone' />
-									)}
-									<div className='numberBox'>
-										<div className='number'>
-											{item.direction === 'outbound'
-												? item.to
-												: item.from}
-										</div>
-										<div className='textwrite'>
-											{callcontext.filter(item)}
+				if (!activeCalls) {
+					if (!item.is_archived && item.direction === 'inbound') {
+						let date = new Date(item.created_at);
+						const [month, day, year, hours, minutes] = [
+							date.toLocaleString('default', { month: 'long' }),
+							date.getDate(),
+							date.getFullYear(),
+							date.getHours(),
+							date.getMinutes(),
+						];
+						return (
+							<div className='mainList' key={item.id}>
+								<div className='date'>
+									<hr className='dotted' />
+									{`${month}, ${day} ${year}`}
+									<hr className='dotted' />
+								</div>
+								<Link
+									to={`/calls/${item.id}`}
+									className='callBox'
+									onClick={() => callcontext.changeMenu(2)}>
+									<div className='leftSide'>
+										{item.direction === 'outbound' ? (
+											<Outgoing className='phone' />
+										) : (
+											<Incoming className='phone' />
+										)}
+										<div className='numberBox'>
+											<div className='number'>
+												{item.direction === 'outbound'
+													? item.to
+													: item.from}
+											</div>
+											<div className='textwrite'>
+												{callcontext.filter(item)}
+											</div>
 										</div>
 									</div>
-								</div>
 
-								<div className='time'>
-									{item.is_archived ? (
-										<div className='saved'>
-											<Saved className='savedBox' />
-											<span>archived</span>
-										</div>
-									) : null}
-									{hours + ':' + minutes}
+									<div className='time'>
+										{item.is_archived ? (
+											<div className='saved'>
+												<Saved className='savedBox' />
+												<span>archived</span>
+											</div>
+										) : null}
+										{hours + ':' + minutes}
+									</div>
+								</Link>
+							</div>
+						);
+					}
+				} else {
+					if (!item.is_archived) {
+						let date = new Date(item.created_at);
+						const [month, day, year, hours, minutes] = [
+							date.toLocaleString('default', { month: 'long' }),
+							date.getDate(),
+							date.getFullYear(),
+							date.getHours(),
+							date.getMinutes(),
+						];
+						return (
+							<div className='mainList' key={item.id}>
+								<div className='date'>
+									<hr className='dotted' />
+									{`${month}, ${day} ${year}`}
+									<hr className='dotted' />
 								</div>
-							</Link>
-						</div>
-					);
+								<Link
+									to={`/calls/${item.id}`}
+									className='callBox'
+									onClick={() => callcontext.changeMenu(2)}>
+									<div className='leftSide'>
+										{item.direction === 'outbound' ? (
+											<Outgoing className='phone' />
+										) : (
+											<Incoming className='phone' />
+										)}
+										<div className='numberBox'>
+											<div className='number'>
+												{item.direction === 'outbound'
+													? item.to
+													: item.from}
+											</div>
+											<div className='textwrite'>
+												{callcontext.filter(item)}
+											</div>
+										</div>
+									</div>
+
+									<div className='time'>
+										{item.is_archived ? (
+											<div className='saved'>
+												<Saved className='savedBox' />
+												<span>archived</span>
+											</div>
+										) : null}
+										{hours + ':' + minutes}
+									</div>
+								</Link>
+							</div>
+						);
+					}
 				}
 			});
 			return callList;
