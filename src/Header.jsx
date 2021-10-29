@@ -61,7 +61,10 @@ const Header = () => {
 			</div>
 			<header>
 				<div className='nav'>
-					<div className='logo'>
+					<Link
+						className='logo'
+						to={'/'}
+						onClick={() => callcontext.changeMenu(1)}>
 						<svg
 							width='486px'
 							height='168px'
@@ -128,7 +131,8 @@ const Header = () => {
 								/>
 							</g>
 						</svg>
-					</div>
+					</Link>
+
 					<div className='menuBox'>
 						<Link
 							className='inbox'
@@ -143,7 +147,6 @@ const Header = () => {
 							onClick={() => callcontext.changeMenu(1)}>
 							All calls
 						</Link>
-
 						<Dots className='dots' />
 						<div className='config'>
 							<Range onClick={openModal} />
