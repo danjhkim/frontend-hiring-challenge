@@ -1,0 +1,72 @@
+.archiveMain {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	padding: 0.5em 0em;
+	box-sizing: border-box;
+}
+
+.archiveTitle {
+	margin: 1em 0em;
+	font-weight: 600;
+	font-size: 13px;
+}
+
+.options {
+	margin-top: 2em;
+	width: 60px;
+	border: var(--border);
+	border-radius: var(--borderRadius);
+	padding: 0.5em 0em;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	cursor: pointer;
+	text-decoration: none;
+	color: inherit;
+	background-color: var(--backgroundWhite);
+	text-align: center;
+	transition-duration: 0.5s;
+}
+.clearbutton {
+	width: 20px;
+	height: 20px;
+}
+.clear {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+}
+
+.clear span {
+	margin-top: 0.5em;
+	font-size: 9px;
+}
+
+.options:active {
+	box-shadow: var(--boxShadow1);
+}
+
+.options:hover {
+	background-color: rgb(231, 231, 231);
+}
+
+.textBoxModal {
+	width: 100%;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.mess {
+	text-align: center;
+}
+
+.mess2 {
+	margin-top: 1em;
+	text-align: center;
+}
