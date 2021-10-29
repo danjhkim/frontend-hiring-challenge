@@ -68,9 +68,11 @@ const Inbox = ({ activeCalls }) => {
 										{item.is_archived ? (
 											<div className='saved'>
 												<Saved className='savedBox' />
-												<span>archived</span>
+												<span>Archived</span>
 											</div>
 										) : null}
+										{/* redundant as archived calls no longer show inside the inbox*/}
+										{/* however can set so that archived calls show with an icon indictor */}
 										{hours + ':' + minutes}
 									</div>
 								</Link>

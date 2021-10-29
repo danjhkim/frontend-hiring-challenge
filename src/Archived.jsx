@@ -145,7 +145,7 @@ const Archived = ({ history }) => {
 									{item.is_archived ? (
 										<div className='saved'>
 											<Saved className='savedBox' />
-											<span>archived</span>
+											<span>Archived</span>
 										</div>
 									) : null}
 									{hours + ':' + minutes}
