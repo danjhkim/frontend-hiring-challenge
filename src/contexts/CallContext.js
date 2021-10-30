@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 export const CallContext = React.createContext();
 
+//stored state with api context
 export const CallStore = props => {
 	const [menu, setMenu] = useState(1);
 	const [list, setList] = useState();

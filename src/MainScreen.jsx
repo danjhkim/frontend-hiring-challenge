@@ -3,8 +3,8 @@ import { withRouter } from 'react-router-dom';
 import { gsap } from 'gsap';
 import lottie from 'lottie-web';
 import { CallContext } from './contexts/CallContext';
-import { getCalls } from './apis/calls';
 import { postArchived } from './apis/calls';
+import axios from 'axios';
 
 import './css/mainscreen.css';
 
@@ -15,6 +15,7 @@ const MainScreen = ({ history }) => {
 	const callcontext = useContext(CallContext);
 	const checkRef = useRef();
 	const [checkanim, setCheckAnim] = useState();
+	const source = axios.CancelToken.source();
 
 	useEffect(() => {
 		const checked = lottie.loadAnimation({
@@ -53,6 +54,12 @@ const MainScreen = ({ history }) => {
 
 		tl.play();
 	};
+
+	useEffect(() => {
+		return () => {
+			source.cancel('Operation canceled by the user.');
+		};
+	}, []);
 
 	useEffect(() => {
 		if (callcontext.menu === 1) {

@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useContext, useRef } from 'react';
+import React, { useEffect, useState, useContext, useCallback } from 'react';
 import { withRouter, useParams } from 'react-router-dom';
 import LoaderComp from './LoaderComp.jsx';
-
 import { getDetails } from './apis/calls';
 import { postArchived } from './apis/calls';
 import { deleteArchived } from './apis/calls';
+import axios from 'axios';
 
 import { CallContext } from './contexts/CallContext';
 
@@ -20,28 +20,37 @@ const CallDetails = ({ history }) => {
 	const callcontext = useContext(CallContext);
 	const { id } = useParams();
 	const [details, setDetails] = useState();
+	const source = axios.CancelToken.source();
 
 	useEffect(() => {
-		setTimeout(() => {
-			getDetails(id).then(res => {
+		getDetails(id)
+			.then(res => {
 				setDetails(res);
+			})
+			.catch(err => {
+				console.log(err);
 			});
-		}, 800);
-		//just to show loader, remove setTimeout in production
 	}, []);
 
-	const archiveCall = () => {
+	useEffect(() => {
+		return () => source.cancel('Operation canceled by the user.');
+		//cleans up all async functions if component is unmounted
+	}, []);
+
+	const archiveCall = useCallback(() => {
 		postArchived(id).then(() => {
 			callcontext.setCallList(null);
 			history.push('/archived');
+			// change behavior after archiving a call
 		});
-	};
+	}, []);
 
-	const archiveDel = () => {
+	const archiveDel = useCallback(() => {
 		deleteArchived(id).then(() => {
 			history.push('/archived');
+			// change behavior after deleting a call from archive
 		});
-	};
+	}, []);
 
 	const loadDetails = () => {
 		if (details) {

@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useCallback } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import LoaderComp from './LoaderComp.jsx';
 import { getCalls } from './apis/calls';
 import { clearAllArchived } from './apis/calls';
 import { CallContext } from './contexts/CallContext';
 import Modal from 'react-modal';
+import axios from 'axios';
 
 import './css/inbox.css';
 import './css/archive.css';
@@ -34,6 +35,7 @@ const Archived = ({ history }) => {
 	const callcontext = useContext(CallContext);
 	const [delay, setDelay] = useState(true);
 	const [modalIsOpen, setIsOpen] = useState(false);
+	const source = axios.CancelToken.source();
 
 	function openModal() {
 		setIsOpen(true);
@@ -45,26 +47,41 @@ const Archived = ({ history }) => {
 
 	function refreshPage() {
 		history.push('/');
+		//change this to change behaviour after clean up archive page
 	}
 
 	setTimeout(() => {
 		setDelay(false);
+		//duration of completed modal. can remove or modify.
 	}, 700);
 
-	const clearAll = () => {
-		clearAllArchived().then(() => {
-			openModal();
-			setTimeout(() => {
-				closeModal();
-			}, 1000);
-		});
-	};
+	const clearAll = useCallback(async () => {
+		clearAllArchived()
+			.then(() => {
+				openModal();
+				setTimeout(() => {
+					closeModal();
+				}, 1000);
+			})
+			.catch(err => {
+				console.log(err);
+			});
+	}, []);
+
+	useEffect(() => {
+		return () => source.cancel('Operation canceled by the user.');
+		//cleans up all async functions if component is unmounted
+	}, []);
 
 	useEffect(() => {
 		if (!callcontext.callList) {
-			getCalls().then(res => {
-				callcontext.archiveSetter(res);
-			});
+			getCalls()
+				.then(res => {
+					callcontext.archiveSetter(res);
+				})
+				.catch(err => {
+					console.log(err);
+				});
 		} else {
 			callcontext.archiveSetter(callcontext.list);
 		}

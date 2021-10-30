@@ -1,6 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import LoaderComp from './LoaderComp.jsx';
+import axios from 'axios';
 
 import { CallContext } from './contexts/CallContext';
 
@@ -13,13 +14,22 @@ import Saved from './icons/saved.svg';
 
 const Inbox = ({ activeCalls }) => {
 	const callcontext = useContext(CallContext);
+	const source = axios.CancelToken.source();
 
 	useEffect(() => {
-		setTimeout(() => {
-			getCalls().then(res => {
+		callcontext.changeMenu(1);
+		getCalls()
+			.then(res => {
 				callcontext.setCallList(res);
+			})
+			.catch(err => {
+				console.log(err);
 			});
-		}, 800);
+
+		return () => {
+			source.cancel('Operation canceled by the user.');
+			//cleans up all async functions if component is unmounted
+		};
 	}, []);
 
 	const loadList = () => {
