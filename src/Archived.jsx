@@ -61,7 +61,7 @@ const Archived = ({ history }) => {
 				openModal();
 				setTimeout(() => {
 					closeModal();
-				}, 1000);
+				}, 500);
 			})
 			.catch(err => {
 				console.log(err);
@@ -98,8 +98,7 @@ const Archived = ({ history }) => {
 					style={customStyles}
 					contentLabel='Clear Modal'>
 					<div className='textBoxModal'>
-						<h2 className='mess'>Clear all Completed!</h2>
-						<h3 className='mess2'>Redirecting...</h3>
+						<h2 className='mess'>Clear all completed!</h2>
 					</div>
 				</Modal>
 				<div className='titleArchiveHeader'>

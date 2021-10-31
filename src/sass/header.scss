@@ -81,19 +81,18 @@ header .logo svg {
 	margin-bottom: 1em;
 	font-family: Helvetica, Arial, sans-serif;
 	font-weight: 600;
-	color: grey;
+	color: #333333;
 }
 
 form button,
 form a {
 	background-color: white;
-	border: none;
+	border: var(--border);
 	color: grey;
 	padding: 0.3em;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	border-top: var(--border);
 	border-radius: 7px;
 	margin: 0.2em;
 	cursor: pointer;
@@ -103,16 +102,15 @@ form a {
 	color: inherit;
 }
 
-form button:active {
-	box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.1);
-}
-
 .archived {
 	text-align: center;
 	line-height: 20px;
 	width: 100px;
 	height: 20px;
 	font-size: 12px;
-	color: white;
-	background-color: #808080;
+	color: #333333;
+	background-color: rgb(245, 245, 245);
+	&:hover {
+		background-color: white;
+	}
 }
